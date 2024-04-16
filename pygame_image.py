@@ -22,18 +22,19 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
-        kk_rct.move_ip(-1,0)
         # print(key_lst)
+        dx = -1
+        dy = 0
         if key_lst[pg.K_UP]:
             # print("上押された")
-            kk_rct.move_ip([0, -1])
+            dy += -1 
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip([0, +1])            
+            dy += 1           
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip([-1, 0])            
+            dx += -1           
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip([+2, 0])
-
+            dx += 2
+        kk_rct.move_ip(dx,dy)
         x = tmr%3200
         # print(tmr, x)
         screen.blit(bg_img, [-x, 0])  # 練習６
